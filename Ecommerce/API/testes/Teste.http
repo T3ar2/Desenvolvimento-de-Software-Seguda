@@ -1,0 +1,8 @@
+### Raiz da Aplicação
+GET  http://localhost:5279
+
+### Segunda funcionalidade
+GET  http://localhost:5279/endereco
+
+### Post funcionalidade
+POST  http://localhost:5279/endereco
