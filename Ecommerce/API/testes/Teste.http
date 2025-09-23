@@ -6,3 +6,22 @@ GET  http://localhost:5279/endereco
 
 ### Post funcionalidade
 POST  http://localhost:5279/endereco
+
+### Listar Produto
+GET http://localhost:5279/api/produto/listar
+
+### Cadastrar Produto
+POST http://localhost:5279/api/produto/cadastrar
+Content-Type: application/json
+
+{
+    "nome" : "MinecraftOriginal",
+    "quantidade" : 2,
+    "preco" : 57.99
+
+}   
+
+### Buscar pedido por nome 
+POST  http://localhost:5279/api/produto/buscar/MinecraftOriginal
+
+
