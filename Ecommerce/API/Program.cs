@@ -87,23 +87,12 @@ return Results.NotFound("Lista sem nada mané");
 
 
 //GET: /api/produto/buscar/nome_do_produto
-app.MapGet("/api/produto/buscar/{nome}", (String nome) =>
+app.MapGet("/api/produto/buscar/{nome}", ([FromRoute]String nome) =>
 {
-    // Foreach
-    // foreach (Produto produtoAchado in produtos)
-    // {
-    //     if (produtoAchado.Nome == nome)
-    //     {
-    //         //Achado
-    //         return Results.Ok(produtoAchado);
-    //     }
-    // }
     //expressão Lambda
     Produto? resultado = produtos.FirstOrDefault(x => x.Nome == nome);
     if (resultado is null) { return Results.NotFound("Produto não encontrado"); }
     return Results.Ok(resultado);
-    
-
 });
 
 
@@ -127,9 +116,28 @@ app.MapPost("/api/produto/cadastrar", ([FromBody] Produto produto) =>
 });
 
 
+//DELETE : /api/produto/deletar/{id}
+app.MapDelete("/api/produto/deletar/{id}", ([FromRoute] String id) =>
+{ 
+    Produto? resultado = produtos.FirstOrDefault(x => x.Id == id);
+    if (resultado is null) { return Results.NotFound("Não é possível deletar algo em que não está no banco de dados."); }
+    produtos.Remove(resultado);
+    return Results.Ok(resultado + " deletado com sucesso.");
+});
 
 
+//UPDATE: /api/produto/alterar/{id}
+app.MapPatch("/api/produto/alterar/{id}", ([FromRoute] String id, [FromBody] Produto produtoAlterada) => { 
+    Produto? resultado = produtos.FirstOrDefault(x => x.Id == id);
+    if (resultado is null) { return Results.NotFound("Produto não encontrado"); }
+    resultado.Nome = produtoAlterada.Nome;
+    resultado.Quantidade = produtoAlterada.Quantidade;
+    resultado.Preco = produtoAlterada.Preco;
+    return Results.Ok(resultado + " alterado com sucesso. ");
+});
 
 
+AppDataContext ctx = new AppDataContext();
+// ctx.Produtos
 
 app.Run();

@@ -25,3 +25,16 @@ Content-Type: application/json
 POST  http://localhost:5279/api/produto/buscar/MinecraftOriginal
 
 
+### Deletar pedido por id
+
+DELETE  http://localhost:5279/api/produto/deletar/{id}
+
+### Update pedido 
+PATCH  http://localhost:5279/api/produto/alterar/f6273a89-ce5c-4dab-80b3-0de79a5a2f0f
+Content-Type: application/json
+
+{
+    "nome" : "Minecraft Pirateado",
+    "quantidade" : 3,
+    "preco" : 10.00
+}
