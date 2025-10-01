@@ -112,6 +112,7 @@ app.MapPost("/api/produto/cadastrar", ([FromBody] Produto produto) =>
         }
     }
     produtos.Add(produto);
+    AppDataContext database = new AppDataContext();
     return Results.Created("", produto);
 });
 
