@@ -142,11 +142,13 @@ app.MapDelete("/api/produto/deletar/{id}", ([FromServices]AppDataContext ctx, [F
 
 //UPDATE: /api/produto/alterar/{id}
 app.MapPatch("/api/produto/alterar/{id}", ([FromServices]AppDataContext ctx, [FromRoute] String id, [FromBody] Produto produtoAlterada) => { 
-    Produto? resultado = produtos.FirstOrDefault(x => x.Id == id);
+    Produto? resultado = ctx.Produtos.Find(id);
     if (resultado is null) { return Results.NotFound("Produto não encontrado"); }
     resultado.Nome = produtoAlterada.Nome;
     resultado.Quantidade = produtoAlterada.Quantidade;
     resultado.Preco = produtoAlterada.Preco;
+    ctx.Produtos.Update(resultado);
+    ctx.SaveChanges();
     return Results.Ok(resultado + " alterado com sucesso. ");
 });
 
