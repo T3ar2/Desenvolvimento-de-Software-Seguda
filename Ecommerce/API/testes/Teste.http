@@ -30,7 +30,7 @@ POST  http://localhost:5279/api/produto/buscar/MinecraftOriginal
 DELETE  http://localhost:5279/api/produto/deletar/ff7ffca3-802a-4dd1-916c-eae3cfb23f35
 
 ### Update pedido
-PATCH  http://localhost:5279/api/produto/alterar/f6273a89-ce5c-4dab-80b3-0de79a5a2f0f
+PATCH  http://localhost:5279/api/produto/alterar/b41b9319-5823-4298-b4c7-cf888829d266
 Content-Type: application/json
 
 {
