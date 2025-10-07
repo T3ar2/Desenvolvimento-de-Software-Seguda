@@ -27,9 +27,9 @@ POST  http://localhost:5279/api/produto/buscar/MinecraftOriginal
 
 ### Deletar pedido por id
 
-DELETE  http://localhost:5279/api/produto/deletar/{id}
+DELETE  http://localhost:5279/api/produto/deletar/ff7ffca3-802a-4dd1-916c-eae3cfb23f35
 
-### Update pedido 
+### Update pedido
 PATCH  http://localhost:5279/api/produto/alterar/f6273a89-ce5c-4dab-80b3-0de79a5a2f0f
 Content-Type: application/json
 

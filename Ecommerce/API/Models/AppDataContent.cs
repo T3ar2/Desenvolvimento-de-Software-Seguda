@@ -8,7 +8,10 @@ using Microsoft.EntityFrameworkCore;
 // 2 -  Conf String de conexão
 public class AppDataContext : DbContext
 {
+    //Atributos que apresentam tabelas na db
     public DbSet<Produto> Produtos { get; set; }
+
+    public DbSet <Categoria> Categorias { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
