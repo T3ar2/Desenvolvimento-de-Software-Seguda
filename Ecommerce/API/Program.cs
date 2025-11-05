@@ -4,13 +4,28 @@ using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
 builder.Services.AddDbContext<AppDataContext>();
 var app = builder.Build();
+
+// Aplicar o middleware CORS
+app.UseCors("AllowFrontend");
 
 //Funcionalidade - Requisições
 // - URL/Endereço
 // - Um método HTTP
+
 
 Console.Clear();
 

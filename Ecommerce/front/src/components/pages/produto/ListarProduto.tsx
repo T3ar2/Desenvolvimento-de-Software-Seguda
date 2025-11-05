@@ -23,11 +23,10 @@ function ListarProdutos(){
                 const resposta = await fetch("http://localhost:5279/api/produto/listar");
 
                 if(!resposta.ok){
-                    throw new Error("Erro na requisição" + resposta.statusText);
-
-                    const dados = await resposta.json();
-                    setProdutos(dados);
+                    throw new Error("Erro na requisição" + resposta.statusText); 
                 }
+                const dados = await resposta.json();
+                setProdutos(dados);
             }catch(error){
                 console.log("Erro: " + error)
             }
