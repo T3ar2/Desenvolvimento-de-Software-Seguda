@@ -20,12 +20,8 @@ function ListarProdutos(){
 
             //AXIOS - biblioteca para realizar requisicoes
             try{
-                const resposta = await fetch("http://localhost:5279/api/produto/listar");
-
-                if(!resposta.ok){
-                    throw new Error("Erro na requisição" + resposta.statusText); 
-                }
-                const dados = await resposta.json();
+                const resposta = await axios.get("http://localhost:5279/api/produto/listar");
+                const dados =  resposta.data;
                 setProdutos(dados);
             }catch(error){
                 console.log("Erro: " + error)
