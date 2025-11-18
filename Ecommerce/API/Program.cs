@@ -106,10 +106,10 @@ app.MapGet("/api/produto/listar", ([FromServices]AppDataContext ctx) =>
 
 
 //GET: /api/produto/buscar/nome_do_produto
-app.MapGet("/api/produto/buscar/{nome}", ([FromServices]AppDataContext ctx, [FromRoute]String nome) =>
+app.MapGet("/api/produto/buscar/{id}", ([FromServices]AppDataContext ctx, [FromRoute]String id) =>
 {
     //expressão Lambda   
-    Produto? resultado = ctx.Produtos.FirstOrDefault(x => x.Nome == nome);
+    Produto? resultado = ctx.Produtos.FirstOrDefault(x => x.Id == id);
     if (resultado is null) { return Results.NotFound("Produto não encontrado"); }
     return Results.Ok(resultado);
 
@@ -152,6 +152,7 @@ app.MapDelete("/api/produto/deletar/{id}", ([FromServices]AppDataContext ctx, [F
     ctx.Produtos.Remove(resultado);
     ctx.SaveChanges();
     return Results.Ok(resultado + " deletado com sucesso.");
+
 });
 
 
